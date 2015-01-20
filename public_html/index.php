@@ -1,6 +1,7 @@
 <?php
     $title='Расписание занятости дисплейных классов';
     $favicon='';
+    $base_font='http://fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic';
 
     $color0='white';
     $color1='#7C8EBF';
@@ -13,8 +14,8 @@
 
 <html>
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
         
+        <link href='<?php echo $base_font ?>' rel='stylesheet' type='text/css'>
         <title><?php echo $title ?></title>
         
         <style type="text/css">
