@@ -2,6 +2,7 @@
     $title='Расписание занятости дисплейных классов';
     $favicon='';
     $base_font='http://fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic';
+    $page_link='http://rooms.asu.test';
 
     $color0='white';
     $color1='#7C8EBF';
@@ -24,6 +25,9 @@
                 color: <?php echo $color4 ?>;
                 font-family: 'Cuprum', sans-serif;
             }
+            a {
+                 text-decoration: none;
+            }
             .headline {
                 text-align: center;
                 font-size: 24pt;
@@ -32,7 +36,9 @@
             }
             .navigation {
                 position: relative;
-                margin: 0 auto;
+                margin: 5px;
+                overflow: auto;
+                text-align: center;
             }
             .rooms {
                 display: inline-block;
@@ -47,6 +53,8 @@
             }
             .view_options {
                 display: inline-block;
+                text-align: left;
+                vertical-align: -7px;
             }
             .theme {
                 display: block;
@@ -68,7 +76,9 @@
     </head>
     
     <body>
-        <div class="headline"><?php echo $title ?></div>
+        <a href="<?php echo $page_link ?>">
+            <div class="headline"><?php echo $title ?></div>
+        </a>
         <div class="navigation">
             <ul class="rooms">
                 <li class="room">113</li>
@@ -80,8 +90,8 @@
                 <li class="room">319</li>
             </ul>
             <div class="view_options">
-                <input type="radio" name="view_mode" value="all">Весь семестр<br>
-                <input type="radio" name="view_mode" value="week">По неделям<br>
+                <label><input type="radio" name="view_mode" value="all" id="view_all">Весь семестр</label><br>
+                <label><input type="radio" name="view_mode" value="week" id="view_week" checked>По неделям</label><br>
             </div>
         </div>
         <div class="theme">
