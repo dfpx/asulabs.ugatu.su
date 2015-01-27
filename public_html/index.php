@@ -1,15 +1,17 @@
 <?php
-    $title='Расписание занятости дисплейных классов';
-    $favicon=''; #установка favicon
-    $base_font='http://fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic';
-    $page_link='http://rooms.asu.test';
+    $Title='Расписание занятости дисплейных классов';
+    $Favicon=''; #установка Favicon
+    $BaseFont='http://fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic';
+    $ClockFont='http://fonts.googleapis.com/css?family=Nova+Mono';
+    $ClockFontFamily='Nova Mono';
+    $PageLink='http://rooms.asu.test';
 
-    $color0='white';
-    $color1='#7C8EBF';
-    $color2='#535F7F';
-    $color3='#A5BEFF';
-    $color4='#292F40';
-    $color5='#95ABE5';
+    $ColorZero='#ffe526';
+    $ColorOne='#0f0f0f'; # Фон и прочее
+    $ColorTwo='#BFC3BA'; # Обводящий
+    $color3='';
+    $color4=''; # Самый тёмный цвет
+    $color5='';
 
     date_default_timezone_set('Asia/Yekaterinburg'); #установка часового пояса
     
@@ -39,33 +41,42 @@
     <head>
         <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="clock.js"></script>
-        <link href='<?php echo $base_font ?>' rel='stylesheet' type='text/css'>
-        <title><?php echo $title ?></title>
+        <link href='<?php echo $BaseFont ?>' rel='stylesheet' type='text/css'>
+        <link href='<?php echo $ClockFont ?>' rel='stylesheet' type='text/css'>
+        <title><?php echo $Title ?></title>
         
         <style type="text/css">
             body {
-                background: <?php echo $color1 ?>;
+                background: <?php echo $ColorOne ?>;
                 color: <?php echo $color4 ?>;
                 font-family: 'Cuprum', sans-serif;
             }
             a {
                  text-decoration: none;
             }
+            label {
+                color: <?php echo $ColorZero ?>;
+            }
             .headline {
                 text-align: center;
                 font-size: 24pt;
-                color: <?php echo $color0 ?>;
+                color: <?php echo $ColorZero ?>;
                 text-shadow: 1px 1px <?php echo $color4 ?>;
             }
             .date-block {
                 text-align: center;
                 font-size: 21pt;
                 margin-top: 8px;
-                color: <?php echo $color0 ?>;
-                text-shadow: 2px 2px 2px <?php echo $color5 ?>;
+                color: <?php echo $ColorZero ?>;
+                text-shadow: 1px 1px 1px <?php echo $color5 ?>;
             }
             slash {
-                color: <?php echo $color2 ?>;
+                color: <?php echo $ColorTwo ?>;
+            }
+            #clock {
+                font-family: <?php echo $ClockFontFamily ?>;
+                font-size: 28pt;
+                color: 
             }
             .navigation {
                 position: relative;
@@ -79,8 +90,8 @@
             .room {
                 display: inline;
                 cursor: default;
-                background: <?php echo $color0 ?>;
-                border: 2px gray ridge;
+                background: white;
+                border: 2px <?php echo $ColorTwo ?> ridge;
                 margin: 5px;
                 font-size: 24pt;
                 padding: 1px 6px;
@@ -102,7 +113,7 @@
                 height: 20px;
                 width: 20px;
                 display: inline-block;
-                border: 1px <?php echo $color0 ?> ridge;
+                border: 1px <?php echo $ColorTwo ?> ridge;
                 margin: 2px;
             }
            
@@ -110,8 +121,8 @@
     </head>
     
     <body>
-        <a href="<?php echo $page_link ?>">
-            <div class="headline"><?php echo $title ?></div>
+        <a href="<?php echo $PageLink ?>">
+            <div class="headline"><?php echo $Title ?></div>
         </a>
         <div class="date-block">
             <?php echo $day_of_week ?> <slash>/</slash> <?php echo date("d.m.y") ?> <slash>/</slash> <?php echo $study_week ?>-я неделя
@@ -134,8 +145,8 @@
             </div>
         </div>
         <div class="theme">
-            <div class="colorbox" style="background: <?php echo $color1 ?>;" title="<?php echo $color1 ?>"></div>
-            <div class="colorbox" style="background: <?php echo $color2 ?>;" title="<?php echo $color2 ?>"></div>
+            <div class="colorbox" style="background: <?php echo $ColorOne ?>;" title="<?php echo $ColorOne ?>"></div>
+            <div class="colorbox" style="background: <?php echo $ColorTwo ?>;" title="<?php echo $ColorTwo ?>"></div>
             <div class="colorbox" style="background: <?php echo $color3 ?>;" title="<?php echo $color3 ?>"></div>
             <div class="colorbox" style="background: <?php echo $color4 ?>;" title="<?php echo $color4 ?>"></div>
             <div class="colorbox" style="background: <?php echo $color5 ?>;" title="<?php echo $color5 ?>"></div>
