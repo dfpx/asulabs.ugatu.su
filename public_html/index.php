@@ -6,11 +6,11 @@
     $ClockFontFamily='Nova Mono';
     $PageLink='http://rooms.asu.test';
 
-    $ColorZero='#ffe526';
-    $ColorOne='#0f0f0f'; # Фон и прочее
-    $ColorTwo='#BFC3BA'; # Обводящий
-    $color3='';
-    $color4=''; # Самый тёмный цвет
+    $ColorZero='#F7ECE1';
+    $ColorOne='#242038'; # Фон и прочее
+    $ColorTwo='#CAC4CE'; # Обводящий
+    $color3='#8D86C9';
+    $color4='#725AC1'; # Самый тёмный цвет
     $color5='';
 
     date_default_timezone_set('Asia/Yekaterinburg'); #установка часового пояса
@@ -33,8 +33,6 @@
     if (date("l")=='Friday') $day_of_week='Пятница';
     if (date("l")=='Saturday') $day_of_week='Суббота';
     if (date("l")=='Sunday') $day_of_week='Воскресенье';
-    if (date("l")=='Game Over') $day_of_week='День, когда Земля остановилась';
-
 ?>
 
 <html>
@@ -48,7 +46,7 @@
         <style type="text/css">
             body {
                 background: <?php echo $ColorOne ?>;
-                color: <?php echo $color4 ?>;
+                color: <?php echo $ColorZero ?>;
                 font-family: 'Cuprum', sans-serif;
             }
             a {
@@ -57,18 +55,26 @@
             label {
                 color: <?php echo $ColorZero ?>;
             }
+            .menu {
+                position: absolute;
+                left: 10px;
+                top: 5px;
+                width: 250px;
+            }
+            .menu_link {
+                margin-bottom: 7px;
+            }
             .headline {
                 text-align: center;
                 font-size: 24pt;
+                font-weight: 600;
                 color: <?php echo $ColorZero ?>;
-                text-shadow: 1px 1px <?php echo $color4 ?>;
             }
             .date-block {
                 text-align: center;
                 font-size: 21pt;
                 margin-top: 8px;
                 color: <?php echo $ColorZero ?>;
-                text-shadow: 1px 1px 1px <?php echo $color5 ?>;
             }
             slash {
                 color: <?php echo $ColorTwo ?>;
@@ -89,9 +95,10 @@
             }
             .room {
                 display: inline;
+                color: <?php echo $ColorOne ?>;
                 cursor: default;
                 background: white;
-                border: 2px <?php echo $ColorTwo ?> ridge;
+                border: 2px <?php echo $ColorTwo ?> solid;
                 margin: 5px;
                 font-size: 24pt;
                 padding: 1px 6px;
@@ -106,14 +113,14 @@
                 position: fixed;
                 right: 2px;
                 bottom: 5px;
-                width: 150px;
+                width: auto;
                 height: 25px;
             }
             .colorbox {
                 height: 20px;
                 width: 20px;
                 display: inline-block;
-                border: 1px <?php echo $ColorTwo ?> ridge;
+                border: 1px <?php echo $ColorTwo ?> solid;
                 margin: 2px;
             }
            
@@ -128,6 +135,14 @@
             <?php echo $day_of_week ?> <slash>/</slash> <?php echo date("d.m.y") ?> <slash>/</slash> <?php echo $study_week ?>-я неделя
             <div id="clock"></div>
         </div>
+        <div class="menu">
+            <ul class="menu_list">
+                <li class="menu_link">Расписание установок медийного оборудования</li>
+                <li class="menu_link">Заявки на установку ПО</li>
+                <li class="menu_link">Список поручений</li>
+                <li class="menu_link">List of missed equipment</li>
+                <li class="menu_link">Страница для веселья</li>
+            </ul>
         </div>
         <div class="navigation">
             <ul class="rooms">
@@ -145,6 +160,7 @@
             </div>
         </div>
         <div class="theme">
+            <div class="colorbox" style="background: <?php echo $ColorZero ?>;" title="<?php echo $ColorZero ?>"></div>
             <div class="colorbox" style="background: <?php echo $ColorOne ?>;" title="<?php echo $ColorOne ?>"></div>
             <div class="colorbox" style="background: <?php echo $ColorTwo ?>;" title="<?php echo $ColorTwo ?>"></div>
             <div class="colorbox" style="background: <?php echo $color3 ?>;" title="<?php echo $color3 ?>"></div>
