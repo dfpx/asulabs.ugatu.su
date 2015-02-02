@@ -44,7 +44,7 @@
         <link rel="shortcut icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link href='<?php echo $BaseFont ?>' rel='stylesheet' type='text/css'>
         <link href='<?php echo $ClockFont ?>' rel='stylesheet' type='text/css'>
-        <title><?php echo $Title ?></title>
+        <title><?php echo $PageTitle ?></title>
         
         <style type="text/css">
             body {
@@ -163,7 +163,20 @@
                 <label><input type="radio" name="view_mode" value="week" id="view_week" checked>По неделям</label><br>
             </div>
             <div class="extra_options">
-                <label><input type="list" name="view_mode" value="all" id="view_all">Показать свободные с</label><br>
+                <label>Показать свободные в </label>
+                <select multiple size="1">
+                    <option value="t0" disabled>Выберите период:</option>
+                    <option value="t1">1 пару (08:00 - 09:35)</option>
+                    <option value="t2">2 пару (09:45 - 11:20)</option>
+                    <option value="t3">3 пару (12:10 - 13:45)</option>
+                    <option value="t4">4 пару (13:55 - 15:30)</option>
+                    <option value="t5">5 пару (16:10 - 17:45)</option>
+                    <option value="t6">6 пару (17:55 - 19:30)</option>
+                    <option value="t7">7 пару (19:35 - 21:00)</option>
+                </select>
+                <label>с</label> <input type="text" size="1" pattern="[0-9]{,2}" min="1" max="23"> 
+                по <input type="text" size="1" pattern="[0-9]{,2}" min="1" max="23"> неделю<br>
+                <label style="font-size: 10pt;">Нажмите Ctrl для множественного выбора</label>
             </div>
         </div>
         <div class="theme">
