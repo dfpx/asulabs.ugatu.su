@@ -1,6 +1,8 @@
 <?php
-    $Title='Расписание занятости дисплейных классов';
-    $Favicon='';
+    $ResourceTitle='ASU Labs';
+    $PageTitle='Расписание занятости дисплейных классов';
+    $TitleSeparator='—';
+    $Favicon='favicon.png';
     $BaseFont='http://fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic';
     $ClockFont='http://fonts.googleapis.com/css?family=Nova+Mono';
     $ClockFontFamily='Nova Mono';
@@ -19,10 +21,10 @@
 <?php
     
 // Определение номера учебной недели
-    if (date("W")>35) $study_week=date("W")-34;
-    else if (date("W")<7) $study_week=date("W")+17;
-    else if (date("W")<25) $study_week=date("W")-6; #сомнительный метод
-    else $study_week='неучебная';
+    if (date("W")>35) $StudyWeek=date("W")-34;
+    else if (date("W")<7) $StudyWeek=date("W")+17;
+    else if (date("W")<25) $StudyWeek=date("W")-6; #сомнительный метод
+    else $StudyWeek='неучебная';
 
 // Перевод дня недели
     if (date("l")=='Monday') $day_of_week='Понедельник';
@@ -38,6 +40,8 @@
     <head>
         <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="clock.js"></script>
+        <link rel="icon" href="<?php echo $Favicon ?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link href='<?php echo $BaseFont ?>' rel='stylesheet' type='text/css'>
         <link href='<?php echo $ClockFont ?>' rel='stylesheet' type='text/css'>
         <title><?php echo $Title ?></title>
@@ -128,10 +132,10 @@
     
     <body>
         <a href="<?php echo $PageLink ?>">
-            <div class="headline"><?php echo $Title ?></div>
+            <div class="headline"><?php echo $PageTitle ?></div>
         </a>
         <div class="date-block">
-            <?php echo $day_of_week ?> <slash>/</slash> <?php echo date("d.m.y") ?> <slash>/</slash> <?php echo $study_week ?>-я неделя
+            <?php echo $day_of_week ?> <slash>/</slash> <?php echo date("d.m.y") ?> <slash>/</slash> <?php echo $StudyWeek ?>-я неделя
             <div id="clock"></div>
         </div>
         <div class="menu">
@@ -157,6 +161,9 @@
             <div class="view_options">
                 <label><input type="radio" name="view_mode" value="all" id="view_all">Весь семестр</label><br>
                 <label><input type="radio" name="view_mode" value="week" id="view_week" checked>По неделям</label><br>
+            </div>
+            <div class="extra_options">
+                <label><input type="list" name="view_mode" value="all" id="view_all">Показать свободные с</label><br>
             </div>
         </div>
         <div class="theme">
