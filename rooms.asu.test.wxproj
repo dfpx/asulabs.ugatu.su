@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<winginx>
-  <project>
-    <name>rooms.asu.test</name>
-    <url>http://rooms.asu.test/</url>
-    <root>home/rooms.asu.test</root>
-  </project>
-</winginx>
