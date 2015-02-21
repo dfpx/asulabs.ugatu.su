@@ -14,7 +14,7 @@
     $Color3='#725AC1';
     $Color4='#242038'; # Самый тёмный цвет
 
-    date_default_timezone_set('Asia/Yekaterinburg'); #установка часового пояса
+    date_default_timezone_set('Asia/Yekaterinburg'); #установка часового пояса не совсем понятно зачем
     
 ?>
 
@@ -178,6 +178,9 @@
                 по <input type="text" size="1" pattern="[0-9]{,2}" min="1" max="23"> неделю<br>
                 <label style="font-size: 10pt;">Нажмите Ctrl для множественного выбора</label>
             </div>
+        </div>
+        <div class="schedule-table">
+            
         </div>
         <div class="theme">
             <div class="colorbox" style="background: <?php echo $Color0 ?>;" title="<?php echo $Color0 ?>"></div>
