@@ -39,13 +39,19 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="/libs/jquery-2.1.3.min.js"></script>
         <script src="clock.js"></script>
         <link rel="icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link rel="shortcut icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link href='<?php echo $BaseFont ?>' rel='stylesheet' type='text/css'>
         <link href='<?php echo $ClockFont ?>' rel='stylesheet' type='text/css'>
         <title><?php echo $PageTitle ?></title>
+        
+        <script>
+            $(".show_extra_options span").click(function () {
+            $(".extra_options").slideToggle("slow");
+            });
+        </script>
         
         <style type="text/css">
             body {
@@ -112,6 +118,12 @@
                 text-align: left;
                 vertical-align: -7px;
             }
+            .show_extra_options {
+                   
+            }
+            .extra_options {
+                display: none;
+            }
             .theme {
                 display: block;
                 position: fixed;
@@ -163,9 +175,10 @@
                 <label><input type="radio" name="view_mode" value="all" id="view_all">Весь семестр</label><br>
                 <label><input type="radio" name="view_mode" value="week" id="view_week" checked>По неделям</label><br>
             </div>
+            <div class="show_extra_options"><span>Показать дополнительные опции</span></div>
             <div class="extra_options">
                 <label>Показать свободные в </label>
-                <select multiple size="1">
+                <select multiple size="8">
                     <option value="t0" disabled>Выберите период:</option>
                     <option value="t1">1 пару (08:00 - 09:35)</option>
                     <option value="t2">2 пару (09:45 - 11:20)</option>
@@ -175,8 +188,8 @@
                     <option value="t6">6 пару (17:55 - 19:30)</option>
                     <option value="t7">7 пару (19:35 - 21:00)</option>
                 </select>
-                <label>с</label> <input type="text" size="1" pattern="[0-9]{,2}" min="1" max="23"> 
-                по <input type="text" size="1" pattern="[0-9]{,2}" min="1" max="23"> неделю<br>
+                <label>с</label> <input type="text" size="1" min="1" max="23"> 
+                по <input type="text" size="1" min="1" max="23"> неделю<br>
                 <label style="font-size: 10pt;">Нажмите Ctrl для множественного выбора</label>
             </div>
         </div>
