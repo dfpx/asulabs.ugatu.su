@@ -39,7 +39,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script src="/libs/jquery-2.1.3.min.js"></script>
+        <!--<script src="/libs/jquery-2.1.3.min.js"></script>-->
+        <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="clock.js"></script>
         <link rel="icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link rel="shortcut icon" href="<?php echo $Favicon ?>" type="image/x-icon">
@@ -48,8 +49,11 @@
         <title><?php echo $PageTitle ?></title>
         
         <script>
-            $(".show_extra_options span").click(function () {
-            $(".extra_options").slideToggle("slow");
+            $(document).ready(function () {
+                $(".extra_options").hide();
+                $(".show_extra_options").click(function () {
+                    $(".extra_options").show();
+                });
             });
         </script>
         
@@ -122,7 +126,6 @@
                    
             }
             .extra_options {
-                display: none;
             }
             .theme {
                 display: block;
@@ -153,12 +156,14 @@
         </div>
         <div class="menu">
             <ul class="menu_list">
+                <li class="menu_link">Расписание занятости дисплейных классов</li>
                 <li class="menu_link">Расписание установок медийного оборудования</li>
-                <li class="menu_link">Заявки на установку ПО</li>
-                <li class="menu_link">Список поручений</li>
-                <li class="menu_link">Список одолженного инвентаря</li>
-                <li class="menu_link">Список изменений модуля</li>
-                <li class="menu_link">О лаборантах</li>
+                <li class="menu_link">Заявки на установку ПО и починку оборудования</li>
+                <li class="menu_link">Схема локальной вычислительной сети</li>
+                <li class="menu_link">Реестр IP/MAC</li>
+                <!--<li class="menu_link">Список поручений</li>-->
+                <!--<li class="menu_link">Список одолженного инвентаря</li>-->
+                <li class="menu_link">О сервисе и лаборантах</li>
             </ul>
         </div>
         <div class="navigation">
@@ -175,10 +180,10 @@
                 <label><input type="radio" name="view_mode" value="all" id="view_all">Весь семестр</label><br>
                 <label><input type="radio" name="view_mode" value="week" id="view_week" checked>По неделям</label><br>
             </div>
-            <div class="show_extra_options"><span>Показать дополнительные опции</span></div>
+            <div class="show_extra_options">Показать дополнительные опции</div>
             <div class="extra_options">
                 <label>Показать свободные в </label>
-                <select multiple size="8">
+                <select multiple size="1">
                     <option value="t0" disabled>Выберите период:</option>
                     <option value="t1">1 пару (08:00 - 09:35)</option>
                     <option value="t2">2 пару (09:45 - 11:20)</option>

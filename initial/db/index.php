@@ -6,15 +6,33 @@
     $db_connect = mysql_connect($db_host, $db_user, $db_pass) or die(mysql_error());
 
     if (!$db_connect) {
-        echo "Сервер MySQL не отвечает.";
+        echo "<p>Сервер MySQL не отвечает.</p>";
         exit();
     }
         
     if (mysql_select_db($db_name, $db_connect)) echo "<p>База данных уже инициализирована.</p>";
 	else {
         mysql_query("CREATE DATABASE $db_name") or die(mysql_error());
-        echo "База данных успешно создана.";
-    } 
+        echo "<p>База данных успешно создана.</p>";
+    }
+
+    mysql_select_db($db_name, $db_connect);
+    mysql_query("CREATE TABLE IF NOT EXISTS lectures (
+        ID INT AUTO_INCREMENT,
+        FirstName TINYTEXT,
+        SecondName TINYTEXT,
+        ThirdName TINYTEXT,
+        BirthDate DATE,
+        Cabinet TINYTEXT,
+        PRIMARY KEY(ID))") or die(mysql_error());
+    echo "<p>Таблица «Преподаватели» инициализирована.</p>";
+
+    mysql_query("CREATE TABLE IF NOT EXISTS rooms_schedule (
+        ID INT AUTO_INCREMENT,
+        Room INT,
+        
+        PRIMARY KEY(ID))") or die(mysql_error());
+    echo "<p>Таблица «Расписание дисплеек» инициализирована.</p>";
 	mysql_close();
 ?>
 
