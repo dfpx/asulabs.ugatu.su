@@ -18,20 +18,28 @@
 
     mysql_select_db($db_name, $db_connect);
     mysql_query("CREATE TABLE IF NOT EXISTS lectures (
-        ID INT AUTO_INCREMENT,
-        FirstName TINYTEXT,
-        SecondName TINYTEXT,
+        ID INT NOT NULL AUTO_INCREMENT,
+        FirstName TINYTEXT NOT NULL,
+        SecondName TINYTEXT NOT NULL,
         ThirdName TINYTEXT,
         BirthDate DATE,
         Cabinet TINYTEXT,
-        PRIMARY KEY(ID))") or die(mysql_error());
+        VK 
+        PRIMARY KEY(ID)
+        )") or die(mysql_error());
     echo "<p>Таблица «Преподаватели» инициализирована.</p>";
 
     mysql_query("CREATE TABLE IF NOT EXISTS rooms_schedule (
-        ID INT AUTO_INCREMENT,
-        Room INT,
-        
-        PRIMARY KEY(ID))") or die(mysql_error());
+        ID INT NOT NULL AUTO_INCREMENT,
+        Room INT NOT NULL,
+        Period TINYINT NOT NULL,
+        LabWork BOOLEAN NOT NULL,
+        Week TINYTEXT NOT NULL ,
+        DayOfWeek TINYINT NOT NULL,
+        Groups TINYTEXT,
+        Lecturer INT,
+        PRIMARY KEY (ID)
+        )") or die(mysql_error());
     echo "<p>Таблица «Расписание дисплеек» инициализирована.</p>";
 	mysql_close();
 ?>

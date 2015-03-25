@@ -19,40 +19,44 @@
 ?>
 
 <?php
-    
+    function getStudyWeek($Week) {
+        if ($Week>35) $Week=$Week-34;
+        else if ($Week<7) $Week=$Week+17;
+        else if ($Week<25) $Week=$Week-6; 
+        else $Week='неучебная';
+        return $Week;
+    }
+
 // Определение номера учебной недели
-    if (date("W")>35) $StudyWeek=date("W")-34;
-    else if (date("W")<7) $StudyWeek=date("W")+17;
-    else if (date("W")<25) $StudyWeek=date("W")-6; #сомнительный метод
-    else $StudyWeek='неучебная';
+    
 
 // Перевод дня недели
-    if (date("l")=='Monday') $day_of_week='Понедельник';
-    if (date("l")=='Tuesday') $day_of_week='Вторник';
-    if (date("l")=='Wednesday') $day_of_week='Среда';
-    if (date("l")=='Thursday') $day_of_week='Четверг';
-    if (date("l")=='Friday') $day_of_week='Пятница';
-    if (date("l")=='Saturday') $day_of_week='Суббота';
-    if (date("l")=='Sunday') $day_of_week='Воскресенье';
+    if (date("l")=='Monday') $DayOfWeek = 'Понедельник';
+    if (date("l")=='Tuesday') $DayOfWeek = 'Вторник';
+    if (date("l")=='Wednesday') $DayOfWeek = 'Среда';
+    if (date("l")=='Thursday') $DayOfWeek = 'Четверг';
+    if (date("l")=='Friday') $DayOfWeek = 'Пятница';
+    if (date("l")=='Saturday') $DayOfWeek = 'Суббота';
+    if (date("l")=='Sunday') $DayOfWeek = 'Воскресенье';
 ?>
 
 <html>
     <head>
         <meta charset="utf-8">
-        <!--<script src="/libs/jquery-2.1.3.min.js"></script>-->
-        <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="/libs/jquery-2.1.3.min.js"></script>
         <script src="clock.js"></script>
         <link rel="icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link rel="shortcut icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link href='<?php echo $BaseFont ?>' rel='stylesheet' type='text/css'>
         <link href='<?php echo $ClockFont ?>' rel='stylesheet' type='text/css'>
-        <title><?php echo $PageTitle ?></title>
+        <title><?php echo $PageTitle, ' ', $TitleSeparator, ' ', $ResourceTitle ?></title>
         
         <script>
             $(document).ready(function () {
                 $(".extra_options").hide();
                 $(".show_extra_options").click(function () {
-                    $(".extra_options").show();
+                    $(".show_extra_options").hide();
+                    $(".extra_options").slideToggle("slow");
                 });
             });
         </script>
@@ -65,6 +69,7 @@
             }
             a {
                  text-decoration: none;
+                 color: <?php echo $Color0 ?>;
             }
             label {
                 color: <?php echo $Color0 ?>;
@@ -123,7 +128,7 @@
                 vertical-align: -7px;
             }
             .show_extra_options {
-                   
+                   cursor: pointer;
             }
             .extra_options {
             }
@@ -148,19 +153,20 @@
     
     <body>
         <a href="<?php echo $PageLink ?>">
-            <div class="headline"><?php echo $PageTitle ?></div>
+            <div class="headline"><?php echo $PageTitle?></div>
         </a>
         <div class="date-block">
-            <?php echo $day_of_week ?> <slash>/</slash> <?php echo date("d.m.y") ?> <slash>/</slash> <?php echo $StudyWeek ?>-я неделя
+            <?php echo $DayOfWeek ?> <slash>/</slash> <?php echo date("d.m.y") ?> <slash>/</slash> <?php echo getStudyWeek(date("W")) ?>-я неделя
             <div id="clock"></div>
         </div>
         <div class="menu">
             <ul class="menu_list">
-                <li class="menu_link">Расписание занятости дисплейных классов</li>
+                <li class="menu_link"><a href="/">Расписание занятости дисплейных классов</a></li>
                 <li class="menu_link">Расписание установок медийного оборудования</li>
-                <li class="menu_link">Заявки на установку ПО и починку оборудования</li>
+                <li class="menu_link">Заявки на установку ПО и настройку оборудования</li>
                 <li class="menu_link">Схема локальной вычислительной сети</li>
                 <li class="menu_link">Реестр IP/MAC</li>
+                <li class="menu_link">Тестовые разделы</li>
                 <!--<li class="menu_link">Список поручений</li>-->
                 <!--<li class="menu_link">Список одолженного инвентаря</li>-->
                 <li class="menu_link">О сервисе и лаборантах</li>
@@ -199,7 +205,9 @@
             </div>
         </div>
         <div class="schedule-table">
-            
+            <?php
+                
+            ?>
         </div>
         <div class="theme">
             <div class="colorbox" style="background: <?php echo $Color0 ?>;" title="<?php echo $Color0 ?>"></div>
