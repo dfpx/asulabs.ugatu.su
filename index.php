@@ -43,8 +43,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script src="/libs/jquery-2.1.3.min.js"></script>
-        <script src="clock.js"></script>
+        <script src="/lib/js/jquery-2.1.3.min.js"></script>
+        <script src="/lib/js/clock.js"></script>
         <link rel="icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link rel="shortcut icon" href="<?php echo $Favicon ?>" type="image/x-icon">
         <link href='<?php echo $BaseFont ?>' rel='stylesheet' type='text/css'>
